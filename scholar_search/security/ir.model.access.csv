@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_scholar_article,scholar_search,scholar_search.model_scholar_article,base.group_user,1,1,1,1
+access_scholar_search,scholar_search,scholar_search.model_scholar_search,base.group_user,1,1,1,1

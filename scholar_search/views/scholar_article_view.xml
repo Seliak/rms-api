@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_scholar_article_kanban" model="ir.ui.view">
+        <field name="name">scholar.article.kanban</field>
+        <field name="model">scholar.article</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="author">
+                <field name="title"/>
+                <field name="snippet"/>
+                <field name="link"/>
+                <field name="author"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                            <strong><field name="title"/></strong>
+                            <div><field name="snippet"/></div>
+                            <div>
+                                <a t-attf-href="#{record.link.raw_value}" target="_blank">
+                                    Read more
+                                </a>
+                            </div>
+                            <div><field name="author"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_scholar_article_form" model="ir.ui.view">
+        <field name="name">scholar.article.form</field>
+        <field name="model">scholar.article</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="title"/>
+                        <field name="snippet"/>
+                        <field name="link"/>
+                        <field name="author"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_scholar_article" model="ir.actions.act_window">
+        <field name="name">Articles</field>
+        <field name="res_model">scholar.article</field>
+        <field name="view_mode">kanban,form</field>
+    </record>
+
+    <menuitem id="menu_scholar_root" name="Scholar Search" sequence="10"/>
+    <menuitem id="menu_scholar_article" name="Articles" parent="menu_scholar_root" action="action_scholar_article"/>
+</odoo>
